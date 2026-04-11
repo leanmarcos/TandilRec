@@ -1,14 +1,19 @@
 package com.tandilrec.TandilRec.modules.appointments;
-
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/appointments")
 public class appointmentController {
 
+    private appointmentService service;
+
+    public appointmentController() {
+        this.service = new appointmentService();
+    }
+
     @GetMapping("/my/history")
-    public void getUserHistorial() {
-        System.out.println(" getUserAppointments");
+    public String getUserHistorial() {
+        return this.service.holaPuto();
     }
 
     @GetMapping("/my")

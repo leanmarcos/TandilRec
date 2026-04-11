@@ -7,6 +7,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/notifications")
 public class NotificationController {
+    private NotificationsService service;
+
+    public NotificationController() {
+        this.service = new NotificationsService();
+    }
 
     @GetMapping("/my")
     public static void getNotifications() {
