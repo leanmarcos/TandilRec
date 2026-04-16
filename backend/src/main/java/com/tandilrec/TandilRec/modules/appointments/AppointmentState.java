@@ -1,4 +1,5 @@
 package com.tandilrec.TandilRec.modules.appointments;
 
-public class AppointmentStateMachine {
+public enum AppointmentState {
+    PENDING
 }

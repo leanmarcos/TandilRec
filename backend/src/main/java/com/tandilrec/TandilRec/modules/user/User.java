@@ -1,5 +1,6 @@
 package com.tandilrec.TandilRec.modules.user;
-
+import com.tandilrec.TandilRec.modules.citizen.Citizen;
+import com.tandilrec.TandilRec.modules.municipal.Municipal;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
@@ -33,6 +34,12 @@ public class User {
     @Column(name = "email" , nullable = false, unique = true)
     private String email;
 
+    @OneToOne(mappedBy = "user", optional = true)
+    private Municipal municipal;
+
+    @OneToOne(mappedBy = "user")
+    private Citizen citizen;
+
     // Advertise: Be VERY careful with deleting/editing this enum. DB data may be extremely affected
     @Column(name = "role" , nullable = false)
     @Enumerated(EnumType.STRING)
@@ -50,7 +57,6 @@ public class User {
     }
 
     @Column(name = "deleted_at" , nullable = true)
-    @ColumnDefault("null")
     private LocalDateTime deletedAt = null;
 
 }

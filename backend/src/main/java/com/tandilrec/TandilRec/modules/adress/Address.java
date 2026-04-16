@@ -1,14 +1,12 @@
 package com.tandilrec.TandilRec.modules.adress;
-
 import com.tandilrec.TandilRec.modules.citizen.Citizen;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
-
 import java.util.List;
 
-
-@Data
+ @Data
  @Entity
  @Table(name = "address")
  public class Address {
@@ -21,16 +19,16 @@ import java.util.List;
    @OneToMany(mappedBy = "address", fetch = FetchType.LAZY)
    private List<Citizen> citizens;
 
+   @NotBlank
    @Column(name = "city" , nullable = false)
-   @NotNull
    private String city;
 
+   @NotBlank
    @Column(name = "street" , nullable = false)
-   @NotNull
    private String street;
 
+   @NotBlank
    @Column(name = "number", nullable = false)
-   @NotNull
    private String number;
 
    @Column(name = "floor")
