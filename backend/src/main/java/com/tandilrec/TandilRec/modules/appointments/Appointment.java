@@ -28,13 +28,8 @@ public class Appointment {
     @JoinColumn(name = "citizen_id" ,  nullable = false)
     private Citizen citizen;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "materials" , nullable = false)
-    private List<MaterialTypeAppointment> materialTypeAppointment;
-
     @OneToMany(mappedBy =  "appointment", fetch = FetchType.LAZY)
-    @JoinColumn(name = "material_types" , nullable = false)
-    private List<MaterialTypeAppointment> materialTypesAppointment;
+    private List<MaterialTypeAppointment> materialTypeAppointment;
 
     @OneToOne(mappedBy = "appointment")
     private Collection collection;
@@ -44,13 +39,12 @@ public class Appointment {
     private String verificationCode;
 
     @Column(name = "status" , nullable = false)
-    @ColumnDefault("active")
     @Enumerated(EnumType.STRING)
-    private AppointmentState status;
+    private AppointmentState status =AppointmentState.PENDING;
 
     @NotNull
     @Column(name= "scheduled_date" , nullable = false)
-    private LocalDateTime scheduledDate;
+    private LocalDateTime scheduledDate = LocalDateTime.now();
 
     @Column(name = "citizen_notes" , nullable = true)
     private String citizenNotes;

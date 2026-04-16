@@ -27,9 +27,9 @@ import java.util.List;
    @Column(name = "street" , nullable = false)
    private String street;
 
-   @NotBlank
+   @NotNull
    @Column(name = "number", nullable = false)
-   private String number;
+   private Integer number;
 
    @Column(name = "floor")
    private String floor;

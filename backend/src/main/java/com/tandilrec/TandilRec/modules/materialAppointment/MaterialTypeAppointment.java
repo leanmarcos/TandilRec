@@ -18,6 +18,6 @@ public class MaterialTypeAppointment {
     private MaterialTypes materialType;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "appointment_id" , unique = true, nullable = false)
+    @JoinColumn(name = "appointment_id" , nullable = false)
     private Appointment appointment;
 }
