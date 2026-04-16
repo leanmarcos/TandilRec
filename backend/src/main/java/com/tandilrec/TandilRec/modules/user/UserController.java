@@ -1,44 +1,61 @@
 package com.tandilrec.TandilRec.modules.user;
-
+import com.tandilrec.TandilRec.modules.adress.AddressDTO;
+import com.tandilrec.TandilRec.modules.citizen.CitizenDTO;
 import com.tandilrec.TandilRec.modules.citizen.CitizenService;
-import com.tandilrec.TandilRec.modules.adress.adressService;
+import com.tandilrec.TandilRec.modules.municipal.MunicipalDTO;
 import com.tandilrec.TandilRec.modules.municipal.municipalService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/auth")
+@Validated()
+@RequiredArgsConstructor()
 public class UserController {
 
-    private UserService userService;
-    private CitizenService citizenService;
-    private municipalService  municipalService;
-    private adressService addresService;
+    private final UserService userService;
+    private final CitizenService citizenService;
+    private final municipalService  municipalService;
 
-    public UserController(){
-        this.userService = new UserService();
-        this.citizenService = new CitizenService();
-        this.municipalService  = new municipalService();
-        this.addresService  = new adressService();
+
+
+    @PostMapping("/signup/citizen")
+    public ResponseEntity<String> signup(@Valid @RequestBody CitizenDTO citizen, BindingResult bindingResult){
+            if(bindingResult.hasErrors()){
+                return ResponseEntity.badRequest().body("Validation error" +  bindingResult.getAllErrors());
+            }
+
+            return ResponseEntity.ok("Account created successfully!");
     }
 
-    @GetMapping("/signup")
-    public void signup(){
+    @PostMapping("/signup/municipal")
+    public ResponseEntity<String> signup(@Valid @RequestBody MunicipalDTO mun, BindingResult bindingResult){
+        if(bindingResult.hasErrors()){
+            return ResponseEntity.badRequest().body("Validation error" +  bindingResult.getAllErrors());
+        }
 
+        return ResponseEntity.ok("Correct mode");
     }
 
-    @GetMapping("/login")
-    public void login(){
+    @PostMapping("/login")
+    public ResponseEntity<String> login(@Valid @RequestBody LogInDTO user, BindingResult bindingResult){
+        if(bindingResult.hasErrors()){
+            return ResponseEntity.badRequest().body("Validation error" +  bindingResult.getAllErrors());
+        }
 
+        return ResponseEntity.ok("Correct mode");
     }
 
-    @GetMapping("/logout")
+    @PostMapping("/logout")
     public void logout(){
 
     }
 
-    @GetMapping("/deleteAccount")
+    @PostMapping("/deleteAccount")
     public void deleteAccount(){
 
     }
