@@ -38,19 +38,11 @@
             <version>4.0.0</version>
         </dependency>
 
-        <!-- persistence (BBDD entities) -->
         <dependency>
-            <groupId>jakarta.persistence</groupId>
-            <artifactId>jakarta.persistence-api</artifactId>
-            <version>3.2.0</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
 
-        <!-- DOTENV -->
-        <dependency>
-            <groupId>org.hibernate.orm</groupId>
-            <artifactId>hibernate-core</artifactId>
-            <version>7.0.0.Beta1</version>
-        </dependency>
 
         <!-- Actuator (testing) -->
         <dependency>
