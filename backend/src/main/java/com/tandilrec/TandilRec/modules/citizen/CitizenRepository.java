@@ -1,4 +1,7 @@
 package com.tandilrec.TandilRec.modules.citizen;
 
-public class CitizenRepository {
+import org.springframework.data.repository.CrudRepository;
+
+public interface CitizenRepository extends CrudRepository<Citizen,Long> {
+
 }

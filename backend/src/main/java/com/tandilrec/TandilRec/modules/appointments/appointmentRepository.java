@@ -1,4 +1,7 @@
 package com.tandilrec.TandilRec.modules.appointments;
 
-public class appointmentRepository {
+import org.springframework.data.repository.CrudRepository;
+
+public interface appointmentRepository extends CrudRepository<Appointment,Long> {
+
 }

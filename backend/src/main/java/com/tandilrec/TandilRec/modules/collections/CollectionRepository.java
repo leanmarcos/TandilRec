@@ -1,4 +1,7 @@
 package com.tandilrec.TandilRec.modules.collections;
 
-public class CollectionRepository {
+import org.springframework.data.repository.CrudRepository;
+
+public interface CollectionRepository extends CrudRepository<CollectionRepository, Long> {
+
 }
