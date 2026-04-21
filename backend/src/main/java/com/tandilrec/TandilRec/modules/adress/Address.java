@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
+
+import java.time.LocalDateTime;
 import java.util.List;
 
  @Data
@@ -37,6 +39,20 @@ import java.util.List;
    @Column(name = "apartment")
    private String apartment;
 
+     @Column(name = "created_at" , updatable = false)
+     @NotNull
+     private LocalDateTime createdAt = LocalDateTime.now();
+
+     @Column(name = "updated_at", nullable = true)
+     private LocalDateTime updatedAt = null;
+
+     @PreUpdate
+     public void onUpdate() {
+         this.updatedAt = LocalDateTime.now();
+     }
+
+     @Column(name = "deleted_at" , nullable = true)
+     private LocalDateTime deletedAt = null;
  }
 
 
